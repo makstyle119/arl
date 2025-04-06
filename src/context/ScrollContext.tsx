@@ -8,6 +8,8 @@ export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
         hero: useRef<HTMLElement | null>(null),
         features: useRef<HTMLElement | null>(null),
         pricing: useRef<HTMLElement | null>(null),
+        faqs: useRef<HTMLElement | null>(null),
+        contact: useRef<HTMLElement | null>(null),
         // Add more sections as needed
     };
 

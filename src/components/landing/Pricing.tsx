@@ -38,7 +38,7 @@ const Pricing = () => {
       price: "$0",
       description: "Perfect for getting started with habit tracking",
       features: [
-        { included: true, text: "Track up to 3 habits" },
+        { included: true, text: "Track up to 5 habits" },
         { included: true, text: "Basic streak tracking" },
         { included: true, text: "Daily reminders" },
         { included: true, text: "Monthly reports" },
@@ -57,7 +57,7 @@ const Pricing = () => {
       price: "4.99/mo",
       description: "Advanced features for productivity pros.",
       features: [
-        { included: true, text: "Track up to 3 habits" },
+        { included: true, text: "Unlimited habits" },
         { included: true, text: "Basic streak tracking" },
         { included: true, text: "Daily reminders" },
         { included: true, text: "Monthly reports" },

@@ -4,9 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { MailIcon, SendIcon } from "lucide-react";
+import { mergeRefs } from "@/lib/mergeRefs";
+import { useScroll } from "@/context/ScrollContext";
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
+  const { sections } = useScroll();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -66,7 +69,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background" ref={contactRef}>
+    <section ref={mergeRefs(sections.contact, contactRef)} id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 fade-target">
           <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>

@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
+import { useScroll } from "@/context/ScrollContext";
+import { mergeRefs } from "@/lib/mergeRefs";
 
 const FAQs = () => {
   const faqRef = useRef<HTMLDivElement>(null);
+  const { sections } = useScroll();
 
   useEffect(() => {
     if (!faqRef.current) return; // Prevent errors
@@ -26,7 +29,7 @@ const FAQs = () => {
   }, []);
 
   return (
-    <section id="faqs" className="py-20 bg-secondary/50" ref={faqRef}>
+    <section ref={mergeRefs(sections.faqs, faqRef)} id="faqs" className="py-20 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h3 className="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
@@ -39,12 +42,12 @@ const FAQs = () => {
               </p>
             </div>
             
-            <div className="bg-secondary/50 rounded-lg p-6">
+            {/* <div className="bg-secondary/50 rounded-lg p-6">
               <h4 className="font-medium mb-2">Is there a free trial?</h4>
               <p className="text-sm text-muted-foreground">
                 Yes, Premium includes a 14-day free trial. You won't be charged until the trial period ends.
               </p>
-            </div>
+            </div> */}
             
             <div className="bg-secondary/50 rounded-lg p-6">
               <h4 className="font-medium mb-2">What payment methods do you accept?</h4>
@@ -53,12 +56,12 @@ const FAQs = () => {
               </p>
             </div>
             
-            <div className="bg-secondary/50 rounded-lg p-6">
+            {/* <div className="bg-secondary/50 rounded-lg p-6">
               <h4 className="font-medium mb-2">How does the Lifetime plan work?</h4>
               <p className="text-sm text-muted-foreground">
                 The Lifetime plan is a one-time payment that gives you permanent access to all Premium features, including future updates.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

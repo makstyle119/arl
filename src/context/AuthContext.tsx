@@ -72,6 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       
       navigate("/dashboard");
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast({
@@ -96,24 +97,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (error) throw error;
       
-      // Create a profile for the new user
-      if (data.user) {
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert({
-            id: data.user.id,
-            email: email
-          });
+      // // Create a profile for the new user
+      // if (data.user) {
+      //   const { error: profileError } = await supabase
+      //     .from('profiles')
+      //     .insert({
+      //       id: data.user.id,
+      //       email: email
+      //     });
           
-        if (profileError) throw profileError;
-      }
+      //   if (profileError) throw profileError;
+      // }
       
       toast({
         title: "Account created!",
-        description: "Welcome to Arl! You've been automatically signed in.",
+        description: "Welcome to Arl! Kindly verify your email then login.",
       });
       
-      navigate("/dashboard");
+      navigate("/auth?type=login");
+      window.location.reload();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast({

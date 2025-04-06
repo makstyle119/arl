@@ -55,6 +55,8 @@ const Navbar = () => {
     { name: "Home", path: "/", section: 'hero' },
     { name: "Features", path: "/#features", section: 'features' },
     { name: "Pricing", path: "/#pricing", section: 'pricing' },
+    { name: "FAQs", path: "/#faqs", section: 'faqs' },
+    { name: "Contact Us", path: "/#contact", section: 'contact' },
   ];
 
   // Close mobile menu when navigating
