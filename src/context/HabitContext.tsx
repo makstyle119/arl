@@ -292,7 +292,24 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Get current streak for a habit
     const getCurrentStreak = (habitId: string): number => {
         const habit = habits.find(h => h.id === habitId);
-        return habit ? habit.streakCount : 0;
+        const completedSet = new Set(habit.completions);
+        let streak = 0;
+        
+        const currentDate = new Date();
+
+        while (true) {
+            const isoDate = currentDate.toISOString().split("T")[0]; // Format: YYYY-MM-DD
+
+            if (completedSet.has(isoDate)) {
+                streak++;
+                // Go to previous day
+                currentDate.setDate(currentDate.getDate() - 1);
+            } else {
+                break;
+            }
+        }
+
+        return streak;
     };
 
     // Get a habit by ID

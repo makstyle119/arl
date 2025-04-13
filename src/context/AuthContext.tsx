@@ -105,7 +105,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       //       id: data.user.id,
       //       email: email
       //     });
-          
+      
       //   if (profileError) throw profileError;
       // }
       
@@ -114,8 +114,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         description: "Welcome to Arl! Kindly verify your email then login.",
       });
       
-      navigate("/auth?type=login");
-      window.location.reload();
+      navigate("/dashboard");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast({

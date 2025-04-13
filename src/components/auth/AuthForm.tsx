@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff, User, ArrowRight } from "lucide-react";
 import { ButtonCustom } from "@/components/ui/button-custom";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/context/AuthContext";
 
 const AuthForm = () => {
+  const location = useLocation();
   const [searchParams] = useSearchParams();
   const defaultTab = searchParams.get("type") === "login" ? "login" : "register";
   const [tab, setTab] = useState(defaultTab);
@@ -39,12 +40,23 @@ const AuthForm = () => {
     setLoading(false);
   };
 
+  // 🧠 Update tab when URL changes (e.g., navigate('/auth?type=login'))
+  useEffect(() => {
+    const newType = searchParams.get("type");
+    if (newType && newType !== tab) {
+      setTab(newType);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
+
   return (
     <div className="w-full max-w-md mx-auto">
       <Tabs
         defaultValue={defaultTab}
         value={tab}
-        onValueChange={setTab}
+        onValueChange={(value) => {
+          setTab(value);
+        }}
         className="w-full"
       >
         <TabsList className="grid w-full grid-cols-2 mb-8">
