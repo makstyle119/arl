@@ -12,37 +12,31 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === 'development' && componentTagger(),
     VitePWA({
+      manifestFilename: 'manifest.webmanifest',
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'My App',
-        short_name: 'App',
-        description: 'This is a React + Bun + Supabase PWA',
+        name: 'Arl',
+        short_name: 'Arl',
+        description: '✨ Your daily habit companion',
+        display: 'standalone',
+        start_url: '/',
         theme_color: '#ffffff',
+        background_color: '#ffffff',
         icons: [
           {
             src: '/pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-          },
-        ],
-      },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/your-supabase-url\.supabase\.co\/.*/i,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'supabase-cache',
-            },
+            purpose: 'any maskable'
           },
         ],
       }
