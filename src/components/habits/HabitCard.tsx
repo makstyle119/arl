@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Check, Flame } from 'lucide-react';
-import { useHabits, Habit } from '@/context/HabitContext';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
+import { Check, Flame } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { useHabits, Habit } from '@/context/HabitContext';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface HabitCardProps {
   habit: Habit;
@@ -31,9 +32,8 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit, showDetails = true }) => {
   };
 
   return (
-    // to={`/habits/${habit.id}`} 
     <Link 
-      to={`#`} 
+      to={`/habits/${habit.id}`} 
       className="block"
     >
       <Card className="h-full hover:shadow-md transition-shadow duration-300">

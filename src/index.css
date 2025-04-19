@@ -139,6 +139,11 @@
   .border-gradient {
     border-image: linear-gradient(to right, #3B82F6, #06B6D4) 1;
   }
+
+  /* Define the custom animation class */
+  .animate-pulse-custom {
+    animation: streakPulse 2s infinite;
+  }
 }
 
 /* Custom Animations */
@@ -270,4 +275,25 @@ html {
 
 .streak-badge {
   @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-arl-500 text-white;
+}
+
+/* Custom styles for calendar */
+.calendar-day {
+  @apply flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200;
+}
+
+.calendar-day.completed {
+  @apply bg-arl-500 text-white hover:bg-arl-600;
+}
+
+.calendar-day.streak {
+  @apply bg-arl-500 text-white hover:bg-arl-600 animate-pulse-custom;
+}
+
+.calendar-day.missed {
+  @apply bg-destructive/20 text-destructive hover:bg-destructive/30;
+}
+
+.calendar-day.future {
+  @apply text-muted-foreground;
 }

@@ -1,16 +1,18 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "@/context/AuthContext";
-import { HabitProvider } from "@/context/HabitContext";
-import Index from "./pages/Index";
+
 import Auth from "./pages/Auth";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 import NewHabit from "./pages/NewHabit";
+import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import HabitDetail from "./pages/HabitDetail";
+import { Toaster } from "@/components/ui/toaster";
+import { HabitProvider } from "@/context/HabitContext";
 import { ScrollProvider } from "./context/ScrollContext";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +53,7 @@ const AppWithAuth = () => (
             </ProtectedRoute>
           } 
         />
+        <Route path="/habits/:id" element={<ProtectedRoute><HabitDetail /></ProtectedRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </HabitProvider>
@@ -61,8 +64,6 @@ const AppWithOutAuth = () => (
   <ScrollProvider>
     <Routes>
       <Route path="/" element={<Index />} />
-
-      {/* Everything else uses providers */}
       <Route path="/*" element={<AppWithAuth />} />
     </Routes>
   </ScrollProvider>
@@ -75,7 +76,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AppWithOutAuth />
-        {/* <AppWithAuth /> */}
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
