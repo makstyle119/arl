@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Auth from "./pages/Auth";
@@ -76,6 +77,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AppWithOutAuth />
+        <Analytics />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
